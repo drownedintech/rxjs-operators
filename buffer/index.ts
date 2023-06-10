@@ -4,7 +4,7 @@ import { getObservable, start } from './provider';
 const bufferTrigger$ = new Subject<void>();
 
 getObservable()
-    .pipe(buffer(bufferTrigger$))
+    .pipe(buffer(bufferTrigger$),)
     .subscribe(x => {
         console.log(x);
     });
