@@ -1,8 +1,8 @@
-import { auditTime } from 'rxjs';
+import { bufferTime } from 'rxjs';
 import { getObservable, start } from './provider';
 
 getObservable()
-    .pipe(auditTime(5000))
+    .pipe(bufferTime(5000))
     .subscribe(x => {
         console.log(x);
     });

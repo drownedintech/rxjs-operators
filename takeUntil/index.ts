@@ -1,7 +1,7 @@
 import { Subject, takeUntil } from 'rxjs';
 import { getObservable, start } from './provider';
 
-const unsubscribe$ = new Subject();
+const unsubscribe$ = new Subject<void>();
 
 getObservable()
     .pipe(takeUntil(unsubscribe$))
@@ -12,5 +12,5 @@ getObservable()
 start();
 
 setTimeout(() => {
-    unsubscribe$.next(undefined);
+    unsubscribe$.next();
 }, 10000);
