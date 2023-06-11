@@ -1,15 +1,12 @@
-import { Subject, takeUntil } from 'rxjs';
-import { getObservable, start } from './provider';
+import { Subject, interval, takeUntil } from 'rxjs';
 
 const unsubscribe$ = new Subject<void>();
 
-getObservable()
+interval(1000)
     .pipe(takeUntil(unsubscribe$))
     .subscribe(x => {
         console.log(x);
     });
-
-start();
 
 setTimeout(() => {
     unsubscribe$.next();

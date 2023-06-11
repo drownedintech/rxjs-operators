@@ -1,10 +1,7 @@
-import { bufferTime } from 'rxjs';
-import { getObservable, start } from './provider';
+import { bufferTime, interval } from 'rxjs';
 
-getObservable()
+interval(1000)
     .pipe(bufferTime(5000))
     .subscribe(x => {
         console.log(x);
     });
-
-start();

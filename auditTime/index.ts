@@ -1,10 +1,7 @@
-import { auditTime } from 'rxjs';
-import { getObservable, start } from './provider';
+import { auditTime, interval } from 'rxjs';
 
-getObservable()
+interval(1000)
     .pipe(auditTime(5000))
     .subscribe(x => {
         console.log(x);
     });
-
-start();

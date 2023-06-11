@@ -1,6 +1,6 @@
-import { getObservable } from './provider';
+import { of } from 'rxjs';
 
-getObservable('Test Value')
+of('Test Value')
     .subscribe(x => {
         console.log(x);
     });

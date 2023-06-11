@@ -1,15 +1,12 @@
-import { BehaviorSubject, Observable, Subject, audit, auditTime, interval, takeUntil } from 'rxjs';
-import { getObservable, start } from './provider';
+import { Subject, audit, interval } from 'rxjs';
 
 const auditTrigger$ = new Subject<void>();
 
-getObservable()
+interval(1000)
     .pipe(audit(() => auditTrigger$))
     .subscribe(x => {
         console.log(x);
     });
-
-start();
 
 setInterval(() => {
     auditTrigger$.next();

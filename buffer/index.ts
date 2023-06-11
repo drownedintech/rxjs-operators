@@ -1,15 +1,12 @@
-import { Subject, buffer } from 'rxjs';
-import { getObservable, start } from './provider';
+import { Subject, buffer, interval } from 'rxjs';
 
 const bufferTrigger$ = new Subject<void>();
 
-getObservable()
+interval(1000)
     .pipe(buffer(bufferTrigger$),)
     .subscribe(x => {
         console.log(x);
     });
-
-start();
 
 setInterval(() => {
     bufferTrigger$.next();
